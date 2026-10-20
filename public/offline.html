@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Ahorra</title>
+    <meta name="theme-color" content="#F6F7FA" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F1219" media="(prefers-color-scheme: dark)" />
+    <!-- The build replaces the next line with the app's built stylesheet links, so this page uses the same tokens. -->
+    <!--ahorra:styles-->
+    <style>
+      .offline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: calc(var(--gap) / 2);
+        min-height: 100dvh;
+        padding: env(safe-area-inset-top) var(--gutter) env(safe-area-inset-bottom);
+        text-align: center;
+      }
+      .offline__logo {
+        margin-bottom: var(--gutter);
+        color: var(--color-brand);
+        font-size: var(--text-md);
+        line-height: var(--leading-md);
+      }
+      .offline__icon {
+        width: calc(var(--icon-size) * 1.5);
+        height: calc(var(--icon-size) * 1.5);
+        margin-bottom: calc(var(--gap) / 2);
+        color: var(--color-text-muted);
+        stroke-width: var(--icon-stroke);
+      }
+      .offline__title { font-size: var(--text-md); line-height: var(--leading-md); }
+      .offline__text {
+        max-width: var(--content-width);
+        font-size: var(--text-sm);
+        line-height: var(--leading-sm);
+        color: var(--color-text-muted);
+      }
+      .offline__retry {
+        margin-top: var(--gutter);
+        height: var(--button-height);
+        padding: 0 var(--button-pad-x);
+        border: var(--border-width) solid transparent;
+        border-radius: var(--radius);
+        background: var(--color-brand);
+        color: var(--color-on-brand);
+        font-size: var(--text-sm);
+        line-height: 1;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="offline" role="alert">
+      <span class="offline__logo">Ahorra</span>
+      <svg class="offline__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 20h.01" />
+        <path d="M8.5 16.429a5 5 0 0 1 7 0" />
+        <path d="M5 12.859a10 10 0 0 1 5.17-2.69" />
+        <path d="M19 12.859a10 10 0 0 0-2.007-1.523" />
+        <path d="M2 8.82a15 15 0 0 1 4.177-2.643" />
+        <path d="M22 8.82a15 15 0 0 0-11.288-3.764" />
+        <path d="m2 2 20 20" />
+      </svg>
+      <p class="offline__title">A connection is needed</p>
+      <p class="offline__text">Ahorra works online. You will continue where you left off as soon as you are connected.</p>
+      <button type="button" class="offline__retry" onclick="location.reload()">Try again</button>
+    </main>
+    <script>
+      window.addEventListener('online', function () { location.reload(); });
+    </script>
+  </body>
+</html>

@@ -1,15 +1,92 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Ahorra</title>
-</head>
-
-<body>
-    <div id="root"></div>
+    <meta name="color-scheme" content="light dark" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#F6F7FA" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F1219" media="(prefers-color-scheme: dark)" />
+    <script>
+      // Runs before the first paint. Applies the theme saved on this device (ahorra.theme: light or dark; nothing saved means
+      // follow the device) and colours the browser bar to match. Same values as the palette in tokens.css and themeSync.js.
+      (function () {
+        try {
+          var t = localStorage.getItem('ahorra.theme');
+          if (t !== 'light' && t !== 'dark') return;
+          document.documentElement.setAttribute('data-theme', t);
+          var c = t === 'dark' ? '#0F1219' : '#F6F7FA';
+          var m = document.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < m.length; i++) m[i].setAttribute('content', c);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <!-- apple-splash:start -->
+    <link rel="apple-touch-startup-image" href="/splash/750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1284x2778.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1179x2556.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1206x2622.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1260x2736.png" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1320x2868.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1488x2266.png" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1536x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1620x2160.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1640x2360.png" media="(device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1668x2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1668x2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/1668x2420.png" media="(device-width: 834px) and (device-height: 1210px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/2048x2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/2064x2752.png" media="(device-width: 1032px) and (device-height: 1376px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <!-- apple-splash:end -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Ahorra" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="preload" href="/logo-mark.png" as="image" />
+    <link rel="preload" href="/fonts/red-hat-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- The loading screen below, styled here so it looks the same in dev (where the stylesheet arrives with the script) as in production. Same values as LoadingScreen.css and AppLogo.css: change them together. -->
+    <style>
+      :root { color-scheme: light dark; --s-bg: #0F1219; --s-text: #98A1B3; --s-logo: #8FA8F0; }
+      :root[data-theme="light"] { color-scheme: light; }
+      :root[data-theme="dark"] { color-scheme: dark; }
+      html { background: var(--s-bg); }
+      body { margin: 0; }
+      .loading-screen { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--s-bg); }
+      .loading-screen__logo { width: 151px; height: 151px; }
+      .loading-screen__tagline { margin: 0; font: 400 16px/24px "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--s-text); text-align: center; }
+      .loading-screen__dots { display: inline-flex; gap: 8px; }
+      .loading-screen__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--s-logo); opacity: 0.3; animation: loading-dot 1500ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+      .loading-screen__dot:nth-child(1) { animation-delay: var(--loader-phase, 0ms); }
+      .loading-screen__dot:nth-child(2) { animation-delay: calc(var(--loader-phase, 0ms) + 500ms); }
+      .loading-screen__dot:nth-child(3) { animation-delay: calc(var(--loader-phase, 0ms) + 1000ms); }
+      @keyframes loading-dot { 0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); } 40% { opacity: 1; transform: scale(1); } }
+      @media (prefers-reduced-motion: reduce) { .loading-screen__dot { animation: none; opacity: 0.6; } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Shown until the app mounts. Keep identical to LoadingScreen.jsx so the hand-over is invisible. -->
+      <div class="loading-screen" role="status" aria-label="Loading Ahorra"><img class="loading-screen__logo" src="/logo-mark.png" alt="" width="512" height="512" /><p class="loading-screen__tagline">Track Every Naira. Spend Wisely.</p><span class="loading-screen__dots" aria-hidden="true"><span class="loading-screen__dot"></span><span class="loading-screen__dot"></span><span class="loading-screen__dot"></span></span></div>
+    </div>
+    <script>
+      // Marks when this loading screen first showed: the start holds it for a minimum time counted from here (StartupGate.jsx).
+      // It also starts the dots on the page clock, so the React copy that replaces this one carries on in step.
+      // 1500 is one dot cycle: same as DOT_CYCLE_MS in loadingContent.js and --splash-dot-cycle in tokens.css.
+      (function () {
+        var now = performance.now();
+        window.__loadingShownAt = now;
+        var screen = document.querySelector('.loading-screen');
+        if (screen) screen.style.setProperty('--loader-phase', -(now % 1500) + 'ms');
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
-</body>
-
+  </body>
 </html>
