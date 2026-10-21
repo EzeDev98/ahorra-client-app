@@ -1,0 +1,18 @@
+.ui-link,
+.ui-link:hover,
+.ui-link:focus,
+.ui-link:active,
+.ui-link:visited {
+  text-decoration: none;
+}
+
+.ui-link {
+  color: var(--color-brand);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: opacity var(--motion-hover) var(--ease-standard);
+}
+
+@media (hover: hover) {
+  .ui-link:hover { opacity: 0.8; }
+}

@@ -1,7 +1,3 @@
-// Generates the iOS launch images and writes their <link> tags into index.html. Run with: npm run splash
-// iOS ignores the manifest splash: without these images an installed app shows a blank screen while it starts.
-// Each image is the plain "A" logo with a soft shadow, centred on the dark page colour with no shadow. The start is always dark, whatever theme is chosen, and matches the manifest background_color.
-// Source: assets/logo-mark.png. Portrait only.
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { mkdir, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -12,10 +8,9 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const outDir = `${root}public/splash/`;
 const htmlPath = `${root}index.html`;
 
-const BACKGROUND = '#0F1219'; // the dark page colour (--p-bg-dark); matches the manifest background_color. The start is always dark.
-const LOGO_SHARE = 0.36; // the logo's canvas (shadow room included), as a share of the screen's shorter side
+const BACKGROUND = '#0F1219'; 
+const LOGO_SHARE = 0.36; 
 
-// [width, height, pixel ratio] in CSS pixels, portrait. iOS 17.5 and later only (the device gate's floor).
 const DEVICES = [
   [375, 667, 2], //   iPhone SE (2nd, 3rd gen)
   [375, 812, 3], //   iPhone XS, 11 Pro, 12 mini, 13 mini
@@ -42,7 +37,7 @@ const DEVICES = [
 const START = '<!-- apple-splash:start -->';
 const END = '<!-- apple-splash:end -->';
 
-const markSource = `${root}assets/logo-mark.png`; // the plain "A" on a transparent background
+const markSource = `${root}assets/logo-mark.png`; 
 if (!existsSync(markSource)) throw new Error('No assets/logo-mark.png. Add the plain "A" on a transparent background.');
 
 const html = readFileSync(htmlPath, 'utf8');
@@ -60,7 +55,7 @@ for (const [width, height, ratio] of DEVICES) {
   const file = `${pixelWidth}x${pixelHeight}.png`;
 
   const logoSize = Math.round(Math.min(pixelWidth, pixelHeight) * LOGO_SHARE);
-  const logo = await logoWithShadow(markSource, logoSize, false); // no shadow: it would not show on dark
+  const logo = await logoWithShadow(markSource, logoSize, false); 
 
   await sharp({ create: { width: pixelWidth, height: pixelHeight, channels: 3, background: BACKGROUND } })
     .composite([{ input: logo, gravity: 'center' }])

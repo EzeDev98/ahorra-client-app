@@ -1,0 +1,30 @@
+.ui-screen {
+  display: flex;
+  justify-content: center;
+  min-height: 100dvh;
+  padding:
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+.ui-screen__inner {
+  display: flex;
+  flex-direction: column;
+  width: min(calc(var(--screen-width) + var(--gutter) * 2), 100%);
+  padding-inline: var(--gutter);
+}
+
+.ui-screen__bar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  height: var(--bar-height);
+}
+
+.ui-screen__group {
+  display: flex;
+  flex-direction: column;
+  margin-block: auto;
+}

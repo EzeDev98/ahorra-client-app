@@ -1,9 +1,5 @@
 
-// Same prefix as public/sw.js.
 const SHELL_CACHE_PREFIX = 'ahorra-shell-';
-
-// In development nothing may be served from a cache, so remove any worker (and its caches) left
-// behind by a production preview on this same address.
 async function removeWorkerAndCaches() {
   const registrations = await navigator.serviceWorker.getRegistrations();
   await Promise.all(registrations.map((registration) => registration.unregister()));
@@ -14,14 +10,12 @@ async function removeWorkerAndCaches() {
 
 async function register() {
   try {
-    // updateViaCache: 'none' makes the browser fetch sw.js fresh, so a new build is noticed.
     await navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' });
   } catch (error) {
     console.warn('Service worker registration failed:', error);
   }
 }
 
-// Production builds register the worker once the page has loaded, so it never competes with startup.
 export function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
 

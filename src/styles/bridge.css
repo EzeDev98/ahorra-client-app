@@ -1,0 +1,96 @@
+/* PatternFly 6 bridge. Maps Ahorra's tokens onto PatternFly's global tokens so PatternFly components
+   follow the design. Token mapping and rule-breaking overrides only; no component styling.
+   Never add the .pf-v6-theme-dark class: light and dark come from tokens.css. */
+
+:root {
+  /* Text */
+  --pf-t--global--text--color--100: var(--color-text);
+  --pf-t--global--text--color--200: var(--color-text-muted);
+  --pf-t--global--text--color--300: var(--color-on-brand);
+  --pf-t--global--text--color--link--default: var(--color-brand);
+  --pf-t--global--text--color--link--hover: var(--color-brand);
+  --pf-t--global--text--color--link--visited: var(--color-brand);
+
+  /* Backgrounds: 100 is the surface, 200 is the page */
+  --pf-t--global--background--color--100: var(--color-surface);
+  --pf-t--global--background--color--200: var(--color-bg);
+  --pf-t--global--background--color--600: var(--color-hover);
+
+  /* Borders */
+  --pf-t--global--border--color--50: var(--color-line);
+  --pf-t--global--border--color--300: var(--color-field-line);
+  --pf-t--global--border--width--100: var(--border-width);
+  --pf-t--global--border--width--200: var(--border-width);
+  --pf-t--global--border--width--300: var(--border-width);
+  --pf-t--global--border--width--400: var(--border-width);
+  --pf-t--global--border--radius--100: var(--radius-sm);
+  --pf-t--global--border--radius--200: var(--radius);
+  --pf-t--global--border--radius--300: var(--radius);
+  --pf-t--global--border--radius--400: var(--radius);
+  --pf-t--global--border--radius--500: var(--radius);
+
+  /* Brand: one colour, no hover shade */
+  --pf-t--global--color--brand--100: var(--color-brand);
+  --pf-t--global--color--brand--200: var(--color-brand);
+  --pf-t--global--color--brand--300: var(--color-brand);
+
+  /* Status: danger is the real red; success is the under-baseline green;
+     warning uses the over-baseline terracotta; info uses the brand blue. */
+  --pf-t--global--color--status--danger--100: var(--color-error);
+  --pf-t--global--color--status--danger--200: var(--color-error);
+  --pf-t--global--color--status--success--100: var(--color-under);
+  --pf-t--global--color--status--success--200: var(--color-under);
+  --pf-t--global--color--status--warning--100: var(--color-over);
+  --pf-t--global--color--status--warning--200: var(--color-over);
+  --pf-t--global--color--status--info--100: var(--color-brand);
+  --pf-t--global--color--status--info--200: var(--color-brand);
+
+  /* Icons */
+  --pf-t--global--icon--color--100: var(--color-text);
+  --pf-t--global--icon--color--200: var(--color-text-muted);
+  --pf-t--global--icon--color--300: var(--color-on-brand);
+
+  /* Font: one family, one weight */
+  --pf-t--global--font--family--100: var(--font-family);
+  --pf-t--global--font--family--200: var(--font-family);
+  --pf-t--global--font--family--body--legacy: var(--font-family);
+  --pf-t--global--font--family--heading--legacy: var(--font-family);
+  --pf-t--global--font--weight--100: var(--font-weight);
+  --pf-t--global--font--weight--200: var(--font-weight);
+  --pf-t--global--font--weight--300: var(--font-weight);
+  --pf-t--global--font--weight--400: var(--font-weight);
+  --pf-t--global--font--weight--body--legacy: var(--font-weight);
+  --pf-t--global--font--weight--body--bold--legacy: var(--font-weight);
+  --pf-t--global--font--weight--heading--legacy: var(--font-weight);
+  --pf-t--global--font--weight--heading--bold--legacy: var(--font-weight);
+
+  /* Font sizes: nothing larger than text-lg */
+  --pf-t--global--font--size--100: var(--text-xs);
+  --pf-t--global--font--size--200: var(--text-sm);
+  --pf-t--global--font--size--300: var(--text-md);
+  --pf-t--global--font--size--400: var(--text-lg);
+  --pf-t--global--font--size--500: var(--text-lg);
+  --pf-t--global--font--size--600: var(--text-lg);
+  --pf-t--global--font--size--700: var(--text-lg);
+  --pf-t--global--font--size--800: var(--text-lg);
+
+  /* Focus ring */
+  --pf-t--global--focus-ring--color--100: var(--focus-ring-color);
+  --pf-t--global--focus-ring--width--offset: var(--focus-ring-size);
+  --pf-t--global--focus-ring--width--inset: var(--focus-ring-size);
+
+  /* No underline in any link or help-text style */
+  --pf-t--global--text-decoration--line--200: none;
+}
+
+/* Rules PatternFly's tokens cannot reach. !important because these are absolute:
+   no underline, no outline, no bold, in every state. */
+[class*="pf-v6-"] {
+  outline: none !important;
+  text-decoration-line: none !important;
+  font-weight: var(--font-weight) !important;
+}
+
+[class*="pf-v6-c-"]:focus-visible {
+  box-shadow: 0 0 0 var(--focus-ring-size) var(--focus-ring-color) !important;
+}

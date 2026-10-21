@@ -1,13 +1,7 @@
-// Build-time half of the service worker (public/sw.js). After each build it:
-//   1. stamps a build id into dist/sw.js, so every deploy is a new worker;
-//   2. injects the precache list (every built file the app shell needs) into dist/sw.js;
-//   3. writes dist/version.json;
-//   4. copies the built stylesheet links into dist/offline.html, so that page uses the same tokens.
 import { execSync } from 'node:child_process';
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-// index.html is never precached: page loads always go to the network (Ahorra is online-only).
 const NEVER_PRECACHE = new Set(['sw.js', 'version.json', 'index.html']);
 const SKIPPED_FILE = /\.(map|txt)$|(^|\/)\.gitkeep$|^splash\//;
 
@@ -18,7 +12,6 @@ function listFiles(dir, base = '') {
   });
 }
 
-// 202609301215-a1b2c3d: minute of the build, then the commit.
 export function makeBuildId(root) {
   const stamp = new Date().toISOString().replace(/\D/g, '').slice(0, 12);
   let commit = 'nogit';
@@ -30,13 +23,6 @@ export function makeBuildId(root) {
   return `${stamp}-${commit}`;
 }
 
-// 1.0.0, 2.0.0 ...: one more than the version of the site that is live right now. Each build asks the live site's
-// /version.json for its version and adds 1, so every new build raises the number and nothing is set by hand. The site's address
-// is VERSION_SOURCE_URL, or RENDER_EXTERNAL_URL, which Render fills in. A live site with no version yet counts as 0, so the
-// first build with this code is 1.0.0.
-// The number must never go backwards. On Render (RENDER is set) a build that cannot read the live version is retried and then
-// FAILED, so nothing wrong is deployed and the live site keeps its current version. Only a build on a developer's own machine,
-// where there is no live site to ask, falls back to 0.0.0.
 export async function nextVersion() {
   const onHost = Boolean(process.env.RENDER);
   const base = (process.env.VERSION_SOURCE_URL || process.env.RENDER_EXTERNAL_URL || '').replace(/\/+$/, '');

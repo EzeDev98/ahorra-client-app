@@ -1,0 +1,16 @@
+.ui-bar {
+  height: calc(var(--gap) / 2);
+  overflow: hidden;
+  background: var(--color-line);
+  border-radius: var(--radius-sm);
+}
+
+.ui-bar__fill {
+  display: block;
+  height: 100%;
+  background: var(--color-brand);
+}
+
+.ui-bar--over .ui-bar__fill { background: var(--color-over); }
+.ui-bar--under .ui-bar__fill { background: var(--color-under); }
+.ui-bar--muted .ui-bar__fill { background: var(--color-field-line); }

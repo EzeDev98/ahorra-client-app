@@ -5,12 +5,9 @@ import { ahorraServiceWorker, makeBuildId, nextVersion } from './vite-plugins/ah
 
 const src = (path) => fileURLToPath(new URL(`./src/${path}`, import.meta.url));
 
-// One id per build: stamped into sw.js, version.json and the app bundle, so the app can tell when a newer build exists.
 const BUILD_ID = makeBuildId(process.cwd());
 
-// Keep these aliases in sync with jsconfig.json.
 export default defineConfig(async ({ command }) => {
-  // One more than the live site's version, worked out once per build (not in `npm run dev`).
   const VERSION = command === 'build' ? await nextVersion() : '0.0.0';
 
   return {

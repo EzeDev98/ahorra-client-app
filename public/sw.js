@@ -1,4 +1,4 @@
-// Ahorra service worker. It exists for installability, fast launches and updates (and push, Step 12).
+// Ahorra service worker. It exists for installability, fast launches and updates.
 // It never caches server data: Ahorra is online-only.
 //
 // The two markers below are replaced at build time by vite-plugins/ahorraServiceWorker.js.
@@ -57,37 +57,4 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(fromShell(url.pathname).then((hit) => hit ?? fetch(request)));
   }
   // Everything else is not handled here, so the browser fetches it as usual.
-});
-
-// Push (Step 12c). The one daily nudge (Guide 8.3). The message may carry { title, body } as JSON; with no payload, or a
-// payload that is not JSON, the default words are used. The tag makes a new nudge replace the previous one instead of stacking.
-const NUDGE_TITLE = 'Ahorra';
-const NUDGE_BODY = 'Entries are waiting for you. Confirm them before the day closes.';
-
-self.addEventListener('push', (event) => {
-  let message = {};
-  try {
-    message = event.data ? event.data.json() : {};
-  } catch {
-    // Not JSON: use the default words.
-  }
-  event.waitUntil(
-    self.registration.showNotification(message.title || NUDGE_TITLE, {
-      body: message.body || NUDGE_BODY,
-      icon: '/icons/icon-192.png',
-      tag: 'ahorra-daily',
-    }),
-  );
-});
-
-// A tap opens the app. The app then brings back pending entries by its normal open rule (Step 9k), so nothing is passed
-// to it here: an already open window is brought to the front, otherwise a new one starts at the app's own start page.
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  event.waitUntil(
-    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windows) => {
-      const open = windows.find((client) => 'focus' in client);
-      return open ? open.focus() : self.clients.openWindow('/');
-    }),
-  );
 });

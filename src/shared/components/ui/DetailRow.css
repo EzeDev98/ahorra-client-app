@@ -1,0 +1,24 @@
+.ui-detail-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap);
+  padding-block: calc(var(--gap) * 0.75);
+  border-bottom: var(--border-width) solid var(--color-line);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
+.ui-detail-row:last-child { border-bottom: 0; }
+
+.ui-detail-row__label {
+  flex: none;
+  color: var(--color-text-muted);
+}
+
+.ui-detail-row__value {
+  min-width: 0;
+  text-align: end;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}

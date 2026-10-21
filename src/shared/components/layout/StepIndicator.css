@@ -1,0 +1,26 @@
+.ui-steps {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 2);
+}
+
+.ui-steps__bars {
+  display: flex;
+  gap: calc(var(--gap) / 2);
+}
+
+.ui-steps__bar {
+  flex: 1;
+  height: calc(var(--border-width) * 4);
+  border-radius: var(--radius-sm);
+  background: var(--color-line);
+  transition: background-color var(--motion-base) var(--ease-standard);
+}
+
+.ui-steps__bar--done { background: var(--color-brand); }
+
+.ui-steps__text {
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--color-text-muted);
+}

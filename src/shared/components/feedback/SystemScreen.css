@@ -1,0 +1,8 @@
+.system-screen { background: var(--color-bg); }
+
+.system-screen .ui-screen__inner {
+  justify-content: center;
+  align-items: center;
+}
+
+.system-screen__logo { margin-bottom: var(--gutter); }

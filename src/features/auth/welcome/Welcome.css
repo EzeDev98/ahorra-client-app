@@ -1,0 +1,30 @@
+.welcome__body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+}
+
+.welcome__text {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 2);
+}
+
+.welcome__title {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+}
+
+.welcome__description {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text-muted);
+}
+
+.welcome__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding-block: var(--gutter);
+}

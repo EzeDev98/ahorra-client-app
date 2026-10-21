@@ -1,0 +1,14 @@
+.ui-logo {
+  display: inline-block;
+  color: var(--color-brand);
+}
+
+.ui-logo--md {
+  font-size: var(--text-md);
+  line-height: var(--leading-md);
+}
+
+.ui-logo--lg {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+}

@@ -1,0 +1,14 @@
+.ui-tag {
+  display: inline-block;
+  padding: 0 calc(var(--gap) * 0.75);
+  border: var(--border-width) solid var(--color-field-line);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--color-text-muted);
+}
+
+.ui-tag--brand {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}

@@ -1,0 +1,30 @@
+.ui-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 2);
+  width: 100%;
+}
+
+.ui-form-field__label {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text);
+}
+
+.ui-form-field__optional {
+  margin-inline-start: calc(var(--gap) / 2);
+  color: var(--color-text-muted);
+}
+
+.ui-form-field__hint {
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--color-text-muted);
+}
+
+/* Same size as the hint, so swapping one for the other does not change the height. */
+.ui-form-error {
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--color-error);
+}

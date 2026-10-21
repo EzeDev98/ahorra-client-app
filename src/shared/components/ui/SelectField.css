@@ -1,0 +1,19 @@
+.ui-control__input.ui-select__input {
+  padding-inline-end: calc(var(--icon-size) + var(--gap));
+  appearance: none;
+  cursor: pointer;
+}
+
+.ui-select__input--placeholder { color: var(--color-text-muted); }
+
+.ui-select__chevron {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: var(--card-pad);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  stroke-width: var(--icon-stroke);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+}

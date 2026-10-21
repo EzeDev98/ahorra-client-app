@@ -1,0 +1,46 @@
+/* One family, one weight, no underline, no outline. Values come from tokens.css only. */
+
+body {
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Browsers and PatternFly default these to bold. */
+h1, h2, h3, h4, h5, h6, strong, b, th { font-weight: var(--font-weight); }
+
+a, a:hover, a:focus, a:active, a:visited,
+button, button:hover, button:focus, button:active {
+  text-decoration: none;
+}
+a, button { color: inherit; font-family: inherit; font-weight: var(--font-weight); }
+
+/* Inputs are 16px so iOS Safari does not zoom on focus. */
+input, select, textarea {
+  font-family: inherit;
+  font-weight: var(--font-weight);
+  font-size: var(--text-md);
+  line-height: var(--leading-md);
+}
+::placeholder { color: var(--color-text-muted); opacity: 1; }
+
+/* No outline anywhere. Keyboard focus is a brand border plus a soft ring instead. */
+*, *::before, *::after { outline: none; }
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  border-color: var(--focus-border);
+  box-shadow: 0 0 0 var(--focus-ring-size) var(--focus-ring-color);
+}
+
+/* The page behind everything (overscroll, rubber-band) follows the theme. index.html paints it earlier, before this file loads. */
+:root { background: var(--color-bg); }
+
+/* A screen change slides the screen 16px sideways. Without this the page briefly becomes scrollable and the
+   phone flashes its scroll indicators on the right and bottom edges (light in dark mode). Clipping sideways
+   overflow on the page itself stops that; up-and-down scrolling is untouched. */
+html, body { overflow-x: clip; }

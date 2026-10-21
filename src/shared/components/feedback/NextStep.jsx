@@ -2,7 +2,6 @@
 import { Hammer } from 'lucide-react';
 import './NextStep.css';
 
-// Placeholder for any screen or link we have not built yet.
 export default function NextStep({
   title = 'Coming next',
   description = 'This screen is built in an upcoming episode.',

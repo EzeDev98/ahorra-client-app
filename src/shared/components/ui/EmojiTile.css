@@ -1,0 +1,17 @@
+.ui-emoji-tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-radius: var(--radius);
+  background: var(--color-tile);
+  font-size: var(--tile-emoji);
+  line-height: 1;
+}
+
+.ui-emoji-tile--sm {
+  width: var(--tile-size-sm);
+  height: var(--tile-size-sm);
+  font-size: var(--tile-emoji-sm);
+}

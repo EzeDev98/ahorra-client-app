@@ -1,0 +1,134 @@
+/* Ahorra design tokens. Three layers; nothing else in the app holds a colour, size or duration.
+   1. Palette    raw values. Only layer 2 reads these.
+   2. Semantic   meaning. Light and dark are chosen here with light-dark().
+   3. Component  sizes and spacing of the building blocks. */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---------- 1. Palette ---------- */
+  --p-ink-600: #2A4B9B;
+  --p-ink-300: #8FA8F0;
+  --p-white: #FFFFFF;
+
+  --p-bg-light: #F6F7FA;        --p-bg-dark: #0F1219;
+  --p-surface-light: #FFFFFF;   --p-surface-dark: #181C26;
+  --p-text-light: #14181F;      --p-text-dark: #E8EBF2;
+  --p-muted-light: #5B6472;     --p-muted-dark: #98A1B3;
+  --p-line-light: #DDE1E8;      --p-line-dark: #2A3040;
+  --p-field-light: #848D9C;     --p-field-dark: #6B7588;
+
+  --p-green-600: #2A7E64;       --p-green-300: #5FC4A2;
+  --p-terracotta-600: #AF5828;  --p-terracotta-300: #E89A6E;
+  --p-red-600: #C0362C;         --p-red-300: #F07A70;
+
+  --p-focus-tint-light: rgba(42, 75, 155, 0.20);
+  --p-focus-tint-dark: rgba(143, 168, 240, 0.22);
+  --p-hover-light: rgba(20, 24, 31, 0.05);
+  --p-hover-dark: rgba(232, 235, 242, 0.06);
+  --p-scrim-light: rgba(15, 18, 25, 0.32);
+  --p-scrim-dark: rgba(0, 0, 0, 0.5);
+
+  /* ---------- 2. Semantic ---------- */
+  --color-brand: light-dark(var(--p-ink-600), var(--p-ink-300));
+  --color-on-brand: light-dark(var(--p-white), var(--p-bg-dark));
+  --color-bg: light-dark(var(--p-bg-light), var(--p-bg-dark));
+  --color-surface: light-dark(var(--p-surface-light), var(--p-surface-dark));
+  --color-text: light-dark(var(--p-text-light), var(--p-text-dark));
+  --color-text-muted: light-dark(var(--p-muted-light), var(--p-muted-dark));
+  --color-line: light-dark(var(--p-line-light), var(--p-line-dark));
+  --color-field-line: light-dark(var(--p-field-light), var(--p-field-dark));
+  --color-focus-tint: light-dark(var(--p-focus-tint-light), var(--p-focus-tint-dark));
+  --color-hover: light-dark(var(--p-hover-light), var(--p-hover-dark));
+  /* Brand at low strength: the fill behind an emoji tile. */
+  --color-tile: color-mix(in srgb, var(--color-brand) 12%, transparent);
+  --color-scrim: light-dark(var(--p-scrim-light), var(--p-scrim-dark));
+
+  /* Verdicts. Always paired with a word or icon, never colour alone. */
+  --color-under: light-dark(var(--p-green-600), var(--p-green-300));
+  --color-on-track: var(--color-text-muted);
+  --color-over: light-dark(var(--p-terracotta-600), var(--p-terracotta-300));
+  --color-error: light-dark(var(--p-red-600), var(--p-red-300));
+
+  /* Startup screen: always the dark page colour, whatever theme is chosen, matching the native splash (manifest background_color). */
+  --color-splash-bg: var(--p-bg-dark);
+  --color-splash-logo: var(--p-ink-300);
+  --color-splash-text: var(--p-muted-dark);
+
+  --font-family: "Red Hat Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-weight: 400;
+
+  --text-xs: 12px;     --leading-xs: 16px;
+  --text-sm: 14px;     --leading-sm: 20px;
+  --text-md: 16px;     --leading-md: 24px;
+  --text-lg: 20px;     --leading-lg: 28px;
+  --text-total: 24px;  --leading-total: 32px;
+
+  --border-width: 0.5px;
+  --radius: 4px;
+  --radius-sm: 3px;
+
+  --focus-border: var(--color-brand);
+  --focus-ring-color: var(--color-focus-tint);
+  --focus-ring-size: 3px;
+
+  --motion-fast: 160ms;
+  --motion-base: 260ms;
+  --motion-fly: 440ms;
+  --motion-stagger: 70ms;
+  --motion-reduced: 120ms;
+  --motion-reveal: 700ms;  /* start-up: the loading screen fading away over the first screen */
+  --motion-loop: 1600ms;   /* install hero: the arrow entering the phone */
+  --motion-nudge: 1400ms;  /* Get started arrow */
+  --motion-type: 1400ms;   /* onboarding demo: the typed entry */
+  --motion-hover: 120ms; /* colour fade on hover, nothing moves */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ---------- 3. Component ---------- */
+  --button-height: 32px;
+  --button-height-block: 42px; /* full-width buttons: easier to tap than the 32px inline size */
+  --button-pad-x: 12px;
+  --input-height: 40px;
+  --icon-button-size: 32px;
+  --icon-button-hit: 6px;
+  --icon-size: 18px;
+  --icon-stroke: 1.4;
+  --opacity-disabled: 0.4;
+  --card-pad: 12px;
+  --gap: 8px;
+  --gutter: 16px;
+  --content-width: 560px;
+  --screen-width: 500px;
+  --bar-height: 56px;
+  --drawer-width: 280px;
+  --modal-width: 400px;
+  --z-overlay: 80;
+  --z-toast: 100;
+  --z-splash: 120;
+  --splash-logo-size: 151px;
+  --splash-logo-size-page: 96px;
+  --splash-logo-shadow: none;
+  --page-loading-logo-shadow: drop-shadow(0 4px 10px light-dark(rgba(42, 75, 155, 0.35), transparent));
+  --splash-gap: 16px;
+  --splash-dot-size: 8px;
+  --splash-dot-cycle: 1500ms;
+
+  /* Onboarding and install: emoji tiles, hero, arrows. */
+  --tile-size: 40px;       --tile-emoji: 20px;
+  --tile-size-sm: 32px;    --tile-emoji-sm: 16px;
+  --hero-box: 72px;        --hero-emoji: 48px;
+  --feed-box-width: 120px; --feed-arrow: 30px;
+  --feed-from: -18px;      --feed-to: 12px;       --feed-out: 22px;
+  --arrow-nudge: 5px;
+  --rise: 10px;
+}
+
+/* Settings, Appearance: force a theme. No attribute means follow the system. */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+/* Reduced motion: hover changes colour at once. */
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-hover: 0ms; }
+}

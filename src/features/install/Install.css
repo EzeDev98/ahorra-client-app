@@ -1,0 +1,114 @@
+.install-card .ui-screen__inner { padding-bottom: var(--gutter); }
+
+.install-card .ui-screen__group {
+  padding: calc(var(--gutter) * 1.5) var(--gutter);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius);
+  animation: install-rise var(--motion-base) var(--ease-out) both;
+}
+
+.install-card .ui-form-screen__body { padding-bottom: 0; }
+
+.install-card .ui-card,
+.install-card .ui-banner { background: var(--color-bg); }
+
+.install__feed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--feed-box-width);
+  height: var(--hero-box);
+  margin-inline: auto;
+}
+
+.install__feed-phone {
+  position: relative;
+  z-index: 1;
+  font-size: var(--hero-emoji);
+  line-height: 1;
+  animation: install-receive var(--motion-loop) ease-in-out infinite;
+}
+
+.install__feed-arrow {
+  width: var(--feed-arrow);
+  height: var(--feed-arrow);
+  margin-inline-end: calc(var(--gap) * -1);
+  fill: var(--color-brand);
+  animation: install-feed var(--motion-loop) ease-in infinite;
+}
+
+.install__hero {
+  display: grid;
+  place-items: center;
+  width: var(--hero-box);
+  height: var(--hero-box);
+  margin-inline: auto;
+  font-size: var(--hero-emoji);
+  line-height: 1;
+  animation: install-pop var(--motion-fly) var(--ease-out) both;
+}
+
+.install__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.install__step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--card-pad);
+  animation: install-rise var(--motion-base) var(--ease-out) both;
+  animation-delay: calc(200ms + var(--i) * var(--motion-stagger));
+}
+
+.install__step-label {
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  color: var(--color-text-muted);
+}
+
+.install__step-text {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}
+
+.install__footnote {
+  text-align: center;
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text-muted);
+}
+
+@keyframes install-rise {
+  from { opacity: 0; transform: translateY(var(--rise)); }
+}
+
+@keyframes install-pop {
+  from { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes install-feed {
+  0% { transform: translateX(var(--feed-from)); opacity: 0; }
+  25% { opacity: 1; }
+  75% { transform: translateX(var(--feed-to)); opacity: 1; }
+  100% { transform: translateX(var(--feed-out)); opacity: 0; }
+}
+
+@keyframes install-receive {
+  0%, 70% { transform: none; }
+  85% { transform: scale(1.07); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .install-card .ui-screen__group,
+  .install__step,
+  .install__hero,
+  .install__feed-phone,
+  .install__feed-arrow { animation: none; }
+}

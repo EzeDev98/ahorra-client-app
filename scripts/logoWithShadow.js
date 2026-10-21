@@ -1,13 +1,10 @@
-// Draws the plain "A" logo on a transparent square with a soft shadow baked into the pixels, so it stands out on a white
-// splash screen. The phone's own splash cannot add a shadow, so it has to be part of the image.
-// source: path to assets/logo-mark.png (the "A" on a transparent background, used as it is). size: output size in pixels.
 import sharp from 'sharp';
 
 const SHADOW_RGB = { r: 42, g: 75, b: 155 }; // the brand blue, matching --splash-logo-shadow
 const SHADOW_OPACITY = 0.35;
-const MARGIN = 0.12; // share of the size kept free on every side, for the shadow
-const BLUR = 0.025; // blur radius, as a share of the size
-const DROP = 0.015; // how far the shadow sits below the logo, as a share of the size
+const MARGIN = 0.12; 
+const BLUR = 0.025; 
+const DROP = 0.015; 
 
 export async function logoWithShadow(source, size, withShadow = true) {
   const margin = Math.round(size * MARGIN);

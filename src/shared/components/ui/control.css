@@ -1,0 +1,63 @@
+.ui-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gap) / 2);
+  width: 100%;
+  height: var(--input-height);
+  padding: 0 var(--card-pad);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-field-line);
+  border-radius: var(--radius);
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+.ui-control--trailing { padding-inline-end: calc(var(--gap) / 2); }
+.ui-control--invalid { border-color: var(--color-error); }
+
+.ui-control--disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* The ring sits on the container; the inner input shows none, or it would double. */
+.ui-control:focus-within {
+  border-color: var(--focus-border);
+  box-shadow: 0 0 0 var(--focus-ring-size) var(--focus-ring-color);
+}
+
+.ui-control__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  box-shadow: none;
+}
+
+.ui-control__affix {
+  flex: none;
+  color: var(--color-text-muted);
+}
+
+/* The browser paints saved or autofilled values with its own tint, which a normal background cannot override. Paint over
+   it with the surface colour and keep the text colour, so an autofilled field looks like any other. */
+.ui-control__input:-webkit-autofill,
+.ui-control__input:-webkit-autofill:hover,
+.ui-control__input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 var(--input-height) var(--color-surface) inset;
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
+}
+
+.ui-control__input:autofill,
+.ui-control__input:autofill:hover,
+.ui-control__input:autofill:focus {
+  box-shadow: 0 0 0 var(--input-height) var(--color-surface) inset;
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
+}

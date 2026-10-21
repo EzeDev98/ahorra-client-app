@@ -1,0 +1,46 @@
+.ui-icon-button {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  padding: 0;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-hover) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+/* Invisible hit area larger than the 32px visual size. */
+.ui-icon-button::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--icon-button-hit) * -1);
+}
+
+.ui-icon-button svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  stroke-width: var(--icon-stroke);
+}
+
+@media (hover: hover) {
+  .ui-icon-button:hover:not(:disabled) { background: var(--color-hover); }
+}
+
+.ui-icon-button:focus-visible {
+  border-color: var(--focus-border);
+  box-shadow: 0 0 0 var(--focus-ring-size) var(--focus-ring-color);
+}
+
+.ui-icon-button:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}

@@ -1,0 +1,25 @@
+.connection-required {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-toast);
+  background: var(--color-bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-base) var(--ease-standard);
+}
+
+.connection-required[data-visible="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.connection-required .ui-screen__inner {
+  justify-content: center;
+  align-items: center;
+}
+
+.connection-required__logo { margin-bottom: var(--gutter); }
+
+@media (prefers-reduced-motion: reduce) {
+  .connection-required { transition-duration: var(--motion-reduced); }
+}

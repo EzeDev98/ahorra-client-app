@@ -1,0 +1,30 @@
+.ui-banner {
+  --banner-tone: var(--color-brand);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap);
+  padding: var(--card-pad);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text);
+}
+
+.ui-banner--success { --banner-tone: var(--color-under); }
+.ui-banner--warning { --banner-tone: var(--color-over); }
+.ui-banner--error { --banner-tone: var(--color-error); }
+
+.ui-banner__icon {
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin-block: calc((var(--leading-sm) - var(--icon-size)) / 2);
+  stroke-width: var(--icon-stroke);
+  color: var(--banner-tone);
+}
+
+.ui-banner__text { flex: 1; min-width: 0; }
+.ui-banner__title + .ui-banner__body { color: var(--color-text-muted); }
+.ui-banner__action { flex: none; align-self: center; }

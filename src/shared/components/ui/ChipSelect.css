@@ -1,0 +1,60 @@
+.ui-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.ui-chip {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.ui-chip--disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* The real input sits invisibly over the chip, so it keeps focus, keyboard and screen-reader behaviour. */
+.ui-chip__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.ui-chip__label {
+  display: inline-flex;
+  align-items: center;
+  height: var(--button-height);
+  padding: 0 var(--button-pad-x);
+  border: var(--border-width) solid var(--color-field-line);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  line-height: 1;
+  color: var(--color-text);
+  transition:
+    background-color var(--motion-hover) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+@media (hover: hover) {
+  .ui-chip__input:not(:checked):not(:disabled):hover + .ui-chip__label {
+    background: var(--color-hover);
+  }
+}
+
+.ui-chip__input:checked + .ui-chip__label {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.ui-chip__input:focus-visible + .ui-chip__label {
+  border-color: var(--focus-border);
+  box-shadow: 0 0 0 var(--focus-ring-size) var(--focus-ring-color);
+}

@@ -1,0 +1,18 @@
+.ui-badge {
+  display: inline-block;
+  min-width: var(--leading-xs);
+  height: var(--leading-xs);
+  padding: 0 calc(var(--gap) / 2);
+  border-radius: var(--radius-sm);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-size: var(--text-xs);
+  line-height: var(--leading-xs);
+  text-align: center;
+}
+
+.ui-badge--floating {
+  position: absolute;
+  inset-block-start: calc(var(--gap) * -0.375);
+  inset-inline-end: calc(var(--gap) * -0.375);
+}

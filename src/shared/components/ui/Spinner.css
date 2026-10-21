@@ -1,0 +1,23 @@
+.ui-spinner {
+  display: inline-block;
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border: calc(var(--border-width) * 3) solid currentcolor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: ui-spinner-rotate calc(var(--motion-fly) * 2) linear infinite;
+}
+
+.ui-spinner--sm {
+  width: calc(var(--icon-size) * 0.75);
+  height: calc(var(--icon-size) * 0.75);
+}
+
+@keyframes ui-spinner-rotate { to { transform: rotate(1turn); } }
+@keyframes ui-spinner-pulse { 50% { opacity: 0.35; } }
+
+/* Reduced motion: a slow pulse instead of a spin. */
+@media (prefers-reduced-motion: reduce) {
+  .ui-spinner { animation: ui-spinner-pulse calc(var(--motion-fly) * 3) ease-in-out infinite; }
+}

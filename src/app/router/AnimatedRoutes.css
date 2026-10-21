@@ -1,0 +1,8 @@
+
+.route-stage {
+  min-height: 100dvh;
+  background: var(--color-bg);
+  overflow: clip;
+}
+
+.route-stage h1:focus-visible { box-shadow: none; }
