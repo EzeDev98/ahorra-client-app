@@ -1,0 +1,6 @@
+.login__forgot {
+  align-self: flex-end;
+  margin-top: calc(var(--gap) * -1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+}

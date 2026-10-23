@@ -1,12 +1,17 @@
-import { useNavigate } from 'react-router';
+import { useSyncExternalStore } from 'react';
+import { Navigate, useNavigate } from 'react-router';
 import './Welcome.css';
+import { sessionManager } from '@features/auth/session/sessionManager.js';
 import ScreenContainer from '@shared/components/layout/ScreenContainer.jsx';
 import Button from '@shared/components/ui/Button.jsx';
 import { DESCRIPTION, TITLE } from './welcomeContent.js';
 
-export default function Welcome({ registerTo, loginTo }) {
+export default function Welcome({ registerTo, loginTo, signedInTo }) {
   const navigate = useNavigate();
-  
+  const signedIn = useSyncExternalStore(sessionManager.subscribe, sessionManager.hasSession);
+
+  if (signedIn) return <Navigate to={signedInTo} replace />;
+
   return (
     <ScreenContainer className="welcome">
       <div className="ui-screen__bar" aria-hidden="true" />
