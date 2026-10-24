@@ -15,5 +15,9 @@ export const SESSION_ENDED = {
   expired: {
     title: 'Your session expired',
     text: 'Please sign in again to continue.',
-  }
+  }, 
+  forgotPin: {
+    title: 'Sign in to set a new PIN',
+    text: 'You signed out because you forgot your PIN. Sign in, then choose a new PIN.',
+  },
 };

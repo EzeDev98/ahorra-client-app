@@ -1,0 +1,5 @@
+.unlock__wait {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text-muted);
+}
