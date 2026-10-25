@@ -22,6 +22,6 @@ export const ROUTES = Object.freeze({
   settingsSecurity: "/next-step",
   changePin: "/next-step",
 
-  home: "/next-step",
+  home: "/home",
   nextStep: "/next-step",
 });

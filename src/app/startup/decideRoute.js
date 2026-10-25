@@ -51,5 +51,5 @@ export async function decideRoute({ launching, pathname = '' }) {
     return SETUP_ROUTES.includes(pathname) ? null : ROUTES.setupLock;
   }
 
-  return launching ? ROUTES.nextStep: null;
+  return launching ? ROUTES.home: null;
 }

@@ -7,4 +7,8 @@ export const queryKeys = {
     all: ['categories'],
     list: () => ['categories', 'list'],
   },
+  entries: {
+    all: ['entries'],
+    pending: () => ['entries', 'pending'],
+  },
 };

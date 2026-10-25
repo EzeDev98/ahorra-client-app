@@ -19,6 +19,12 @@ export const queryClient = new QueryClient({
   },
 });
 
+export function invalidateEntryData() {
+  return queryClient.invalidateQueries({
+    predicate: (query) => ['entries'].includes(query.queryKey[0]),
+  });
+}
+
 export function clearQueryData() {
   queryClient.cancelQueries();
   queryClient.clear();
