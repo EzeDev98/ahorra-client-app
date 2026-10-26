@@ -8,4 +8,7 @@ export const entriesApi = {
     httpClient.post('/entries/capture', { text, source, clientRequestId }),
 
   listPending: () => httpClient.get('/entries/pending'),
+  confirm: (id, edits) => httpClient.post(`/entries/pending/${encodeURIComponent(id)}/confirm`, edits),
+  discard: (id) => httpClient.post(`/entries/pending/${encodeURIComponent(id)}/discard`),
+  restore: (id) => httpClient.post(`/entries/pending/${encodeURIComponent(id)}/restore`),
 };

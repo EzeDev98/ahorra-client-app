@@ -40,8 +40,8 @@ export const ROUTE_CONFIG = [
   { path: ROUTES.setupLock, ...SETUP_SCREEN, element: <LockOffer backTo={ROUTES.setupIncome} setPinTo={ROUTES.setPin} homeTo={ROUTES.home} /> },
 
   { path: ROUTES.setPin, ...FIRST_RUN, element: <SetPin offerTo={ROUTES.setupLock} securityTo={ROUTES.settingsSecurity} changePinTo={ROUTES.changePin} homeTo={ROUTES.home} /> },
-  { path: ROUTES.unlock, ...SIGNED_IN, element: <Unlock homeTo={ROUTES.nextStep} /> },
-  { path: ROUTES.home, ...IN_APP, element: <Home />},
+  { path: ROUTES.unlock, ...SIGNED_IN, element: <Unlock homeTo={ROUTES.home} /> },
+  { path: ROUTES.home, ...IN_APP, element: <Home destinations={{ reports: ROUTES.nextStep, insights: ROUTES.nextStep, behavior: ROUTES.nextStep, settings: ROUTES.nextStep}} />},
   {path: ROUTES.nextStep, ...IN_APP, element: <NextStep />,},
 
 ];

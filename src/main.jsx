@@ -18,6 +18,7 @@ import App from "@app/App.jsx";
 import { registerServiceWorker } from "@core/pwa/registerServiceWorker.js";
 import { clearQueryData, queryClient } from "./core/data/queryClient";
 import { startAutoLock } from "./features/lock/autoLock";
+import { startResurface } from "./features/home/resurface";
 configureHttpClient({
   getAccessToken: sessionManager.getAccessToken,
   refreshAccessToken: sessionManager.refresh,
@@ -30,6 +31,7 @@ sessionManager.subscribe(() => {
 
 startRefreshAhead();
 startAutoLock();
+startResurface();
 registerServiceWorker();
 appUpdate.start();
 createRoot(document.getElementById("root")).render(
