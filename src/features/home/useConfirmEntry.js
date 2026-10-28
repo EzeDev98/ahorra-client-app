@@ -32,13 +32,13 @@ export default function useConfirmEntry() {
 
     await leave?.();
 
-    queryClient.setQueryData(
-      queryKeys.entries.pending(),
-      (entries) =>
-        entries &&
-        entries.filter((item) => String(item.id) !== String(entry.id)),
+    queryClient.setQueryData(queryKeys.day.status(), (status) =>
+      status && { ...status, pending: status.pending.filter((item) => String(item.id) !== String(entry.id)) },
     );
+
+    queryClient.invalidateQueries({ queryKey: queryKeys.day.status() });
     queryClient.invalidateQueries({ queryKey: queryKeys.entries.all });
+    queryClient.invalidateQueries({ queryKey: queryKeys.report.all });
     return true;
   };
 }

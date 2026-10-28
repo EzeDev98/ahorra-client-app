@@ -23,5 +23,11 @@ export const ROUTES = Object.freeze({
   changePin: "/next-step",
 
   home: "/home",
+
+  reports: "/reports",
+  reportDetail: "/reports/:date",
+  
   nextStep: "/next-step",
 });
+
+export const reportDetailPath = (date) => ROUTES.reportDetail.replace(':date', encodeURIComponent(date));

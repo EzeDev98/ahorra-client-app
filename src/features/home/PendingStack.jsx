@@ -35,7 +35,7 @@ export default function PendingStack({ entries, gated, note, loadFailed, retryin
   const confirmEntry = useConfirmEntry();
   const discardEntry = useDiscardEntry();
   const inFlight = useRef(new Set()); 
-  const [confirming, setConfirming] = useState([]); 
+  const [confirming, setConfirming] = useState([]);
   const [discarding, setDiscarding] = useState([]); 
   const [editing, setEditing] = useState(null); 
   const [sheetOpen, setSheetOpen] = useState(false);

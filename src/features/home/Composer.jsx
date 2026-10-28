@@ -11,6 +11,7 @@ import { voiceApi } from './api/voiceApi.js';
 import {
   BUSY_PLACEHOLDER,
   ENTRY_MAX_LENGTH,
+  GATED_PLACEHOLDER,
   GENERIC_ERROR,
   LABELS,
   PLACEHOLDER,
@@ -61,6 +62,7 @@ export default function Composer({ gated = false }) {
     (busy && BUSY_PLACEHOLDER) ||
     (transcribing && VOICE.transcribing) ||
     (recorder.recording && VOICE.listening) ||
+    (gated && GATED_PLACEHOLDER) ||
     PLACEHOLDER;
   const shownHint = !online ? OFFLINE_MESSAGE : recorder.recording ? VOICE.listeningHint : hint; 
 

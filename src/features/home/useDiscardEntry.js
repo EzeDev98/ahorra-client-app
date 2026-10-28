@@ -12,19 +12,20 @@ export default function useDiscardEntry() {
   const toast = useToast();
 
   const refresh = () => {
+    queryClient.invalidateQueries({ queryKey: queryKeys.day.status() });
     queryClient.invalidateQueries({ queryKey: queryKeys.entries.all });
+    queryClient.invalidateQueries({ queryKey: queryKeys.report.all });
   };
-
   const undo = async (entry) => {
     try {
-      await entriesApi.restore(entry.id);
+       await entriesApi.restore(entry.id);
     } catch {
       toast.show(DISCARD_COPY.restoreFailed, { tone: "error" });
       return;
     }
     refresh();
   };
-
+  
   return async function discard(entry, leave, { onError } = {}) {
     try {
       await entriesApi.discard(entry.id);
@@ -44,14 +45,16 @@ export default function useDiscardEntry() {
       }
       return false;
     }
-
     await leave?.();
-
     queryClient.setQueryData(
-      queryKeys.entries.pending(),
-      (entries) =>
-        entries &&
-        entries.filter((item) => String(item.id) !== String(entry.id)),
+      queryKeys.day.status(),
+      (status) =>
+        status && {
+          ...status,
+          pending: status.pending.filter(
+            (item) => String(item.id) !== String(entry.id),
+          ),
+        },
     );
     refresh();
     toast.show(DISCARD_COPY.discarded, {

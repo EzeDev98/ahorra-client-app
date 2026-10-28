@@ -1,6 +1,7 @@
 
 export const PLACEHOLDER = 'Type or speak an entry';
 export const BUSY_PLACEHOLDER = 'Reading your entry…';
+export const GATED_PLACEHOLDER = 'Confirm pending entries to continue';
 
 export const LABELS = {
   input: 'Type what you spent or received',

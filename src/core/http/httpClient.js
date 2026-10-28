@@ -6,6 +6,7 @@ const FALLBACK_MESSAGES = {
   0: 'Could not reach the server. Check your connection and try again.',
   401: 'Please sign in again.',
   403: 'You do not have access to this.',
+  423: 'Confirm your pending entries to continue',
   429: 'Too many attempts. Please wait a moment and try again.',
 };
 
@@ -33,6 +34,7 @@ export class ApiError extends Error {
   get isNotFound() { return this.status === 404; }
   get isConflict() { return this.status === 409; }
   get isRateLimited() { return this.status === 429; }
+  get isGated() { return this.status === 423; }
 }
 
 let config = {

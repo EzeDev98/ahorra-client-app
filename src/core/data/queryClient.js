@@ -1,12 +1,21 @@
 import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
 import { ApiError } from '@core/http/httpClient.js';
+import { queryKeys } from './queryKeys';
 
 function shouldRetry(failureCount, error) {
   if (!(error instanceof ApiError)) return false;
   return (error.isNetwork || error.status >= 500) && failureCount < 2;
 }
 
+function handleGated(error) {
+  if (error instanceof ApiError && error.isGated) {
+    queryClient.invalidateQueries({ queryKey:  queryKeys.day.all })
+  }
+}
+
 export const queryClient = new QueryClient({
+  queryCache: new QueryCache({ onError: handleGated }),
+  MutationCache: new MutationCache({ onError: handleGated }),
   defaultOptions: {
     queries: {
       staleTime: 30_000,
@@ -21,7 +30,7 @@ export const queryClient = new QueryClient({
 
 export function invalidateEntryData() {
   return queryClient.invalidateQueries({
-    predicate: (query) => ['entries'].includes(query.queryKey[0]),
+    predicate: (query) => ['day', 'entries', 'report'].includes(query.queryKey[0]),
   });
 }
 

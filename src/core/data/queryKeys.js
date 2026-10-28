@@ -1,14 +1,25 @@
 export const queryKeys = {
-  income: {
-    all: ['income'],
-    current: () => ['income', 'current']
+  day: {
+    all: ['day'],
+    status: () => ['day', 'status'],
+  },
+  entries: {
+    all: ['entries'],
+    pending: () => ['entries', 'pending'],
   },
   categories: {
     all: ['categories'],
     list: () => ['categories', 'list'],
   },
-  entries: {
-    all: ['entries'],
-    pending: () => ['entries', 'pending'],
+  report: {
+    all: ['report'],
+    ambient: () => ['report', 'ambient'],
+    list: ({ from, to } = {}) => ['report', 'list', { from: from ?? null, to: to ?? null }],
+    latest: () => ['report', 'latest'],
+    detail: (date) => ['report', 'detail', date],
+  },
+  income: {
+    all: ['income'],
+    current: () => ['income', 'current']
   },
 };
