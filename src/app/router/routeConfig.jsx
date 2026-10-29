@@ -14,9 +14,11 @@ import SetupIncome from '@features/setup/income/SetupIncome.jsx';
 import Home from '@/features/home/Home.jsx';
 import Reports from '@features/reports/Reports.jsx';
 import ReportDetail from '@features/reports/ReportDetail.jsx';
+import Insights from '@/features/insights/Insights.jsx';
 import Install from '@features/install/Install.jsx';
 import NextStep from '@/shared/components/feedback/NextStep.jsx';
 import { ROUTES, reportDetailPath } from './routes.js';
+import Behavior from '@/features/behavior/Behavior.jsx';
 
 const OPEN = {}; 
 const BEFORE_SIGN_IN = { installed: true };
@@ -44,9 +46,11 @@ export const ROUTE_CONFIG = [
   { path: ROUTES.setPin, ...FIRST_RUN, element: <SetPin offerTo={ROUTES.setupLock} securityTo={ROUTES.settingsSecurity} changePinTo={ROUTES.changePin} homeTo={ROUTES.home} /> },
   { path: ROUTES.unlock, ...SIGNED_IN, element: <Unlock homeTo={ROUTES.home} /> },
   
-  { path: ROUTES.home, ...IN_APP, element: <Home destinations={{ reports: ROUTES.reports, insights: ROUTES.nextStep, behavior: ROUTES.nextStep, settings: ROUTES.nextStep }} /> },
+  { path: ROUTES.home, ...IN_APP, element: <Home destinations={{ reports: ROUTES.reports, insights: ROUTES.insights, behavior: ROUTES.behavior, settings: ROUTES.nextStep }} /> },
   { path: ROUTES.reports, ...IN_APP, element: <Reports backTo={ROUTES.home} detailTo={reportDetailPath} /> },
   { path: ROUTES.reportDetail, ...IN_APP, element: <ReportDetail backTo={ROUTES.reports} /> },
-  {path: ROUTES.nextStep, ...IN_APP, element: <NextStep />,},
+  { path: ROUTES.insights, ...IN_APP, element: <Insights backTo={ROUTES.home} incomeTo={ROUTES.settingsIncome} />},
+  { path: ROUTES.behavior, ...IN_APP, element: <Behavior backTo={ROUTES.home}/>},
+  { path: ROUTES.nextStep, ...IN_APP, element: <NextStep />,},
 
 ];

@@ -12,4 +12,6 @@ export const incomeApi = {
 
   set: ({ minAmount, maxAmount, periodType, periodLength }) =>
     httpClient.put('/income', { minAmount, maxAmount, periodType, periodLength }),
+
+  getVariance: ({ date } = {}) => httpClient.get('/income/variance', { params: { date } }),
 };

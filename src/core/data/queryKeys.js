@@ -20,6 +20,11 @@ export const queryKeys = {
   },
   income: {
     all: ['income'],
-    current: () => ['income', 'current']
+    current: () => ['income', 'current'],
+    variance: (date) => ['income', 'variance', date ?? null],
   },
+  behavior: {
+    all: ['behavior'],
+    overview: () => ['behavior', 'overview'],
+  }
 };

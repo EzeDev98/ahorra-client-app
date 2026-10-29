@@ -21,11 +21,14 @@ export const ROUTES = Object.freeze({
 
   settingsSecurity: "/next-step",
   changePin: "/next-step",
+  settingsIncome: "/next-step",
 
   home: "/home",
 
   reports: "/reports",
   reportDetail: "/reports/:date",
+  insights: "/insights",
+  behavior: "/behavior",
   
   nextStep: "/next-step",
 });

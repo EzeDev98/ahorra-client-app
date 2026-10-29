@@ -39,6 +39,7 @@ export default function useConfirmEntry() {
     queryClient.invalidateQueries({ queryKey: queryKeys.day.status() });
     queryClient.invalidateQueries({ queryKey: queryKeys.entries.all });
     queryClient.invalidateQueries({ queryKey: queryKeys.report.all });
+    queryClient.invalidateQueries({ queryKey: queryKeys.behavior.all });
     return true;
   };
 }
