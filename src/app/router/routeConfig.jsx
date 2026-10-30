@@ -5,7 +5,7 @@ import RequestReset from '@features/auth/passwordReset/RequestReset.jsx';
 import VerifyResetCode from '@features/auth/passwordReset/VerifyResetCode.jsx';
 import CreateNewPassword from '@features/auth/passwordReset/CreateNewPassword.jsx';
 import { decideRoute } from "@app/startup/decideRoute.js";
-import LockOffer from '@/features/lock/lockerOffer.jsx';
+import LockOffer from '@/features/lock/LockerOffer.jsx';
 import SetPin from '@/features/lock/SetPin.jsx';
 import Unlock from '@/features/lock/Unlock.jsx';
 import Register from "@features/auth/register/Register.jsx";

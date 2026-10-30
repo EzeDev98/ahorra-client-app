@@ -14,7 +14,7 @@ import useBellPeek from './useBellPeek.js';
 import useGreeting from './useGreeting.js';
 import useDayStatus from './useDayStatus.js';
 import useGateWatch from './useGateWatch.js';
-import ReminderNudge from './reminderNudge.jsx';
+import ReminderNudge from './ReminderNudge.jsx';
 
 export default function Home({ destinations }) {
   const { title, subtitle } = useGreeting();
