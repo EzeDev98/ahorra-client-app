@@ -14,6 +14,7 @@ import useBellPeek from './useBellPeek.js';
 import useGreeting from './useGreeting.js';
 import useDayStatus from './useDayStatus.js';
 import useGateWatch from './useGateWatch.js';
+import ReminderNudge from './reminderNudge.jsx';
 
 export default function Home({ destinations }) {
   const { title, subtitle } = useGreeting();
@@ -56,6 +57,7 @@ export default function Home({ destinations }) {
         <Greeting title={title} subtitle={subtitle} />
         <Composer gated={gated} />
         <PendingStack entries={visible} gated={gated} note={note} loadFailed={loadFailed} retrying={retrying} onRetry={retry} />
+        <ReminderNudge to={destinations.reminder} />
       </main>
       <SidePanel open={menuOpen} gated={gated} destinations={destinations} onClose={() => setMenuOpen(false)} />
     </div>

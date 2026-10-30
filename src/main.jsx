@@ -19,6 +19,11 @@ import { registerServiceWorker } from "@core/pwa/registerServiceWorker.js";
 import { clearQueryData, queryClient } from "./core/data/queryClient";
 import { startAutoLock } from "./features/lock/autoLock";
 import { startResurface } from "./features/home/resurface";
+import { startTheme } from "./features/settings/appearance/themeStore";
+import { startThemeSync } from "./features/settings/appearance/themeSync";
+
+startTheme();
+
 configureHttpClient({
   getAccessToken: sessionManager.getAccessToken,
   refreshAccessToken: sessionManager.refresh,
@@ -34,6 +39,8 @@ startAutoLock();
 startResurface();
 registerServiceWorker();
 appUpdate.start();
+startThemeSync();
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ErrorBoundary>

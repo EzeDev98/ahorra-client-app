@@ -4,9 +4,11 @@ import LoadingScreen from "@shared/components/feedback/LoadingScreen.jsx";
 import { ROUTES } from "@app/router/routes.js";
 import { detectInstalledApp } from "@core/pwa/isPWAInstalled.js";
 import { decideRoute } from "./decideRoute.js";
+import { confirmTheme } from "@/features/settings/appearance/themeSync.js";
 
 const MIN_VISIBLE_MS = 3000;
 const FONT_WAIT_MS = 1500;
+const THEME_WAIT_MS = 800;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -28,6 +30,7 @@ export default function StartupGate({ children }) {
       detectInstalledApp()
         .then(() => decideRoute({ launching: true }))
         .catch(() => null),
+        Promise.race([confirmTheme(), sleep(THEME_WAIT_MS)]),
     ]).then(([, destination]) => {
       if (cancelled) return;
       if (destination && window.location.pathname === ROUTES.onboarding) {

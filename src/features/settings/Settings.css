@@ -1,0 +1,38 @@
+.settings__list { display: flex; flex-direction: column; }
+
+.settings__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  width: 100%;
+  height: var(--input-height);
+  padding: 0 var(--gap);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius);
+  background: none;
+  font-size: var(--text-sm);
+  text-align: start;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+@media (hover: hover) {
+  .settings__row:hover { background: var(--color-hover); }
+}
+
+.settings__row:focus-visible {
+  border-color: var(--focus-border);
+  box-shadow: 0 0 0 var(--focus-ring-size) var(--focus-ring-color);
+}
+
+.settings__chevron {
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  stroke-width: var(--icon-stroke);
+  color: var(--color-text-muted);
+}

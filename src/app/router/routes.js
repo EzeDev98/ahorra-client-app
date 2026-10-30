@@ -19,9 +19,10 @@ export const ROUTES = Object.freeze({
   setPin: '/set-pin',
   unlock: '/unlock',
 
-  settingsSecurity: "/next-step",
-  changePin: "/next-step",
-  settingsIncome: "/next-step",
+  settingsSecurity: "/settings/security",
+  changePin: "/settings/security/change-pin",
+  lockOff: "/settings/security/lock-off",
+  settingsIncome: "/settings/income",
 
   home: "/home",
 
@@ -29,6 +30,11 @@ export const ROUTES = Object.freeze({
   reportDetail: "/reports/:date",
   insights: "/insights",
   behavior: "/behavior",
+  settingsAccount: "/settings/account",
+  settingsAbout: "/settings/about",
+  settingsReminder: "/settings/reminder",
+  settings: "/settings",
+  settingsAppearance: "/settings/appearance",
   
   nextStep: "/next-step",
 });

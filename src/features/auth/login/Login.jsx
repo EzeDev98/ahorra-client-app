@@ -24,6 +24,7 @@ import {
   WRONG_CREDENTIALS,
 } from "./loginContent.js";
 import { UNVERIFIED_MESSAGE, validateLogin } from "./loginRules.js";
+import { confirmTheme } from "@/features/settings/appearance/themeSync.js";
 
 function problemFrom(error, username) {
   if (!(error instanceof ApiError))
@@ -142,6 +143,7 @@ export default function Login({
       destination = null;
     }
 
+    await Promise.race([confirmTheme(), new Promise((resolve) => setTimeout(resolve, 800))]);
     navigate(destination ?? homeTo, { replace: true });
   };
 

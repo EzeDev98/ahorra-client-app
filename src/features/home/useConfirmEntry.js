@@ -4,6 +4,7 @@ import { queryKeys } from "@core/data/queryKeys.js";
 import { useToast } from "@shared/components/ui/toastContext.js";
 import { entriesApi } from "./api/entriesApi.js";
 import { CONFIRM_COPY } from "./pendingContent.js";
+import { reminderNudge } from "./reminderNudge.js"
 
 export default function useConfirmEntry() {
   const queryClient = useQueryClient();
@@ -40,6 +41,7 @@ export default function useConfirmEntry() {
     queryClient.invalidateQueries({ queryKey: queryKeys.entries.all });
     queryClient.invalidateQueries({ queryKey: queryKeys.report.all });
     queryClient.invalidateQueries({ queryKey: queryKeys.behavior.all });
+    reminderNudge.arm();
     return true;
   };
 }

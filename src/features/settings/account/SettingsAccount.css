@@ -1,0 +1,14 @@
+.settings-account {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gutter);
+}
+
+.settings-account > .ui-card { align-self: stretch; }
+
+.settings-account__note {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text-muted);
+}
