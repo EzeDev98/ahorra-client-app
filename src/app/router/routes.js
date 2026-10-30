@@ -35,8 +35,6 @@ export const ROUTES = Object.freeze({
   settingsReminder: "/settings/reminder",
   settings: "/settings",
   settingsAppearance: "/settings/appearance",
-  
-  nextStep: "/next-step",
 });
 
 export const reportDetailPath = (date) => ROUTES.reportDetail.replace(':date', encodeURIComponent(date));

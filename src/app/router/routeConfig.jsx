@@ -25,7 +25,6 @@ import SettingsSecurity from '@features/settings/security/SettingsSecurity.jsx';
 import SettingsAppearance from '@features/settings/appearance/SettingsAppearance.jsx';
 import SettingsAbout from '@features/settings/about/SettingsAbout.jsx';
 import Install from '@features/install/Install.jsx';
-import NextStep from '@/shared/components/feedback/NextStep.jsx';
 import { ROUTES, reportDetailPath } from './routes.js';
 import SettingsReminder from '@/features/notifications/SettingsReminder.jsx';
 
@@ -71,8 +70,5 @@ export const ROUTE_CONFIG = [
   { path: ROUTES.settingsAppearance, ...IN_APP, element: <SettingsAppearance backTo={ROUTES.settings} /> },
   { path: ROUTES.settingsAbout, ...IN_APP, element: <SettingsAbout backTo={ROUTES.settings} /> },
   { path: ROUTES.settingsReminder, ...IN_APP, element: <SettingsReminder backTo={ROUTES.settings} /> },
-
-
-  { path: ROUTES.nextStep, ...IN_APP, element: <NextStep />,},
 
 ];

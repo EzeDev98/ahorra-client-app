@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react';
+import { queryClient } from '@core/data/queryClient.js';
 
 export const CHECK_EVERY_MS = 3 * 60_000;
 export const RUNNING_BUILD = typeof __APP_BUILD_ID__ === 'string' ? __APP_BUILD_ID__ : null;
@@ -100,6 +101,7 @@ export const appUpdate = {
       });
     });
     writeApplied(target);
+    await attempt(async () => queryClient.clear());
     window.location.replace(`/?updated=${Date.now()}`);
   },
 };

@@ -15,7 +15,7 @@ function handleGated(error) {
 
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({ onError: handleGated }),
-  MutationCache: new MutationCache({ onError: handleGated }),
+  mutationCache: new MutationCache({ onError: handleGated }),
   defaultOptions: {
     queries: {
       staleTime: 30_000,

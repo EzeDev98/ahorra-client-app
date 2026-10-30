@@ -61,6 +61,8 @@ export default function SetupIncome({ nextTo }) {
     try {
       const income = await incomeApi.set(toRequestBody(values));
       queryClient.setQueryData(queryKeys.income.current(), income);
+      queryClient.invalidateQueries({ queryKey: queryKeys.income.all, predicate: (query) => query.queryKey[1] !== 'current' });
+      queryClient.invalidateQueries({ queryKey: queryKeys.report.all });
       navigate(nextTo);
     } catch (error) {
       setFormError(error instanceof ApiError ? error.message : GENERIC_ERROR);
